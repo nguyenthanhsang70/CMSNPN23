@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Chạm vào trái tim</title>
+    <style>
+        /* === CHỐNG CHỌN VĂN BẢN & COPY HOÀN TOÀN === */
+        * {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important; /* chặn menu "Copy" trên iPhone/iPad */
+            -webkit-tap-highlight-color: transparent !important; /* bỏ viền xanh khi chạm */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #000;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            touch-action: manipulation;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .guide {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .guide.show { opacity: 1; }
+
+        .heart {
+            font-size: 120px;
+            user-select: none;
+            opacity: 0.3;
+            transition: all 0.4s ease;
+        }
+        .heart.active {
+            opacity: 1;
+            transform: scale(1.3);
+            text-shadow: 0 0 30px #ff1744,
+                         0 0 60px #ff1744,
+                         0 0 90px #ff1744;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1.3); }
+            50% { transform: scale(1.5); }
+        }
+
+        .loading {
+            margin-top: 50px;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.8s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="guide" id="guide">
+            Đặt ngón tay của em lên trái tim dưới đây 1 giây…
+        </div>
+        
+        <div class="heart" id="heart">♥</div>
+        
+        <div class="loading" id="loading">Đang mở ra điều bất ngờ…</div>
+    </div>
+
+    <script>
+        const guide = document.getElementById('guide');
+        const heart = document.getElementById('heart');
+        const loading = document.getElementById('loading');
+        let touchTimer;
+        let hasActivated = false;
+
+        // Hiện hướng dẫn
+        setTimeout(() => guide.classList.add('show'), 500);
+
+        // Xử lý cả chạm và chuột
+        const startHold = (e) => {
+            if (hasActivated) return;
+            e.preventDefault();
+
+            touchTimer = setTimeout(() => {
+                hasActivated = true;
+                heart.classList.add('active');
+                guide.style.opacity = '0';
+
+                setTimeout(() => {
+                    loading.style.opacity = '1';
+                }, 300);
+
+                // Chuyển trang sau 1.5s (thay link của bạn vào đây)
+                setTimeout(() => {
+                    window.location.href = "CMSN.html"; // ← sửa link ở đây
+                }, 1500);
+
+            }, 1000); // giữ 1 giây
+        };
+
+        const cancelHold = () => {
+            if (!hasActivated) clearTimeout(touchTimer);
+        };
+
+        // Sự kiện cho mọi thiết bị
+        heart.addEventListener('touchstart', startHold, { passive: false });
+        heart.addEventListener('mousedown', startHold);
+
+        heart.addEventListener('touchend', cancelHold);
+        heart.addEventListener('touchcancel', cancelHold);
+        heart.addEventListener('mouseup', cancelHold);
+        heart.addEventListener('mouseleave', cancelHold);
+    </script>
+</body>
+</html>

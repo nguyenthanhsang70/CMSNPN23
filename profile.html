@@ -6,7 +6,8 @@
     <title>Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        /* Sử dụng Be Vietnam Pro để hỗ trợ dấu tiếng Việt tốt nhất */
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;800&display=swap');
         
         :root {
             --primary: #6366f1;
@@ -25,7 +26,7 @@
         }
         
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Be Vietnam Pro', sans-serif;
             background: var(--bg-gradient);
             color: var(--text-main);
             min-height: 100vh;
@@ -97,6 +98,7 @@
             animation: spin 6s linear infinite;
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
+        
         .avatar {
             width: 100%;
             height: 100%;
@@ -106,21 +108,27 @@
         }
         
         .name-container { margin-bottom: 25px; }
+        
         .name {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 800;
             text-transform: uppercase;
-            background: linear-gradient(to bottom, #fff, #94a3b8);
+            background: linear-gradient(to bottom, #ffffff, #cbd5e1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
+            line-height: 1.5; 
+            padding-top: 5px;
+            display: block;
         }
+        
         .sub-name {
             font-size: 18px;
             color: var(--accent);
             margin-bottom: 5px;
+            font-weight: 400;
         }
-        /* Style mới cho dòng IT */
+        
         .job-title {
             font-size: 12px;
             font-weight: 600;
@@ -152,7 +160,7 @@
 
         .section-header {
             text-align: left;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
             margin: 0 0 15px 5px;
             display: flex;
@@ -165,7 +173,7 @@
         .links-container {
             text-align: left;
             padding-left: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
         .link-item {
             display: inline-flex;
@@ -176,21 +184,22 @@
         }
         .link-item i {
             color: #f8fafc;
-            font-size: 18px;
+            font-size: 16px;
             transform: rotate(-45deg);
             opacity: 0.8;
         }
         .link-item span {
             color: #3b82f6;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
         }
         .link-item:hover { transform: translateX(5px); }
 
+        /* ĐÃ CHỈNH SỬA GAP TẠI ĐÂY */
         .hobbies-list {
             display: flex;
             justify-content: flex-start;
-            gap: 8px;
+            gap: 16px; /* Tăng khoảng cách giữa các tag */
             flex-wrap: wrap;
             margin-bottom: 30px;
             padding-left: 5px;
@@ -218,10 +227,10 @@
             margin-bottom: 30px;
         }
         .company-logo {
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             background: #fff;
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -229,8 +238,8 @@
             overflow: hidden;
         }
         .company-logo img { width: 80%; object-fit: contain; }
-        .company-name { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 2px; }
-        .company-role { font-size: 14px; color: var(--text-muted); }
+        .company-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .company-role { font-size: 13px; color: var(--text-muted); }
         
         .social-links {
             display: flex;
@@ -323,14 +332,13 @@
         </div>
         <div class="links-container">
             <a href="https://locket.cam/thanhsang70" class="link-item" target="_blank">
-                <i class="fas fa-link"></i> <span>locket.cam</span>
+                <i class="fas fa-link"></i> <span>locket.cam/thanhsang70</span>
             </a>
         </div>
-         <div class="links-container">
+        <div class="links-container">
             <a href="https://nguyenthanhsang70.github.io/NTS/" class="link-item" target="_blank">
-                <i class="fas fa-link"></i> <span>Web của sang</span>
+                <i class="fas fa-link"></i> <span>Web của Sang</span>
             </a>
-            
         </div>
 
         <div class="section-header">
@@ -353,7 +361,3 @@
 
 </body>
 </html>
-
-
-
-

@@ -3,79 +3,88 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Kết Thúc</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Hẹn Gặp Lại Em ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,700;1,700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
   :root {
-    --bg-gradient: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-    --accent: #d63384;
-    --primary-btn: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-    --card-bg: rgba(255, 255, 255, 0.4);
-    --text-main: #2d3436;
-    --text-sub: #636e72;
-    --glass-border: rgba(255, 255, 255, 0.6);
+    --bg-color1: #ff9a9e;
+    --bg-color2: #fad0c4;
+    --bg-color3: #fbc2eb;
+    --accent: #ff4d6d;
+    --primary-btn: linear-gradient(135deg, #ff4d6d 0%, #ff758c 100%);
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --text-main: #3d3d3d;
+    --text-sub: #7d7d7d;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   
   body {
     font-family: 'Quicksand', sans-serif;
-    background: var(--bg-gradient);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     overflow: hidden;
-    perspective: 1000px;
   }
 
-  .animated-bg {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-    background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(255, 107, 129, 0.1) 0%, transparent 40%);
-    animation: pulseBg 10s ease-in-out infinite alternate;
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
-  @keyframes pulseBg {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
+  .heart-bg {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.3);
+    user-select: none;
+    pointer-events: none;
+    animation: floatUp 10s linear infinite;
+    z-index: 1;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
   }
 
   .card {
     width: 90%;
-    max-width: 480px;
+    max-width: 420px;
     background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 40px;
-    padding: 40px 30px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    padding: 50px 30px 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     text-align: center;
     position: relative;
     z-index: 10;
+    transition: transform 0.3s ease;
   }
 
-  .avatar-container {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 20px;
+  .card:hover { transform: translateY(-5px); }
+
+  .avatar-wrapper {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .avatar-box {
-    width: 100%;
-    height: 100%;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    padding: 5px;
+    padding: 6px;
     background: white;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: relative;
   }
 
   .avatar {
@@ -83,40 +92,59 @@
     height: 100%;
     border-radius: 50%;
     background: url('avatarnts.jpg') center/cover;
+    background-color: #eee;
   }
 
-  .avatar-box:hover { transform: scale(1.1) rotate(5deg); }
+  .online-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: #4cd137;
+    border: 3px solid white;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(76, 209, 55, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(76, 209, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 209, 55, 0); }
+  }
 
   h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 38px;
-    color: var(--accent);
-    margin-bottom: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-style: italic;
+    color: var(--text-main);
+    margin: 20px 0 5px;
   }
 
   .subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-sub);
-    font-weight: 600;
     margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
   .chat-bubble {
-    background: white;
-    border-radius: 20px 20px 20px 5px;
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 15px;
     margin-bottom: 30px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-    font-size: 16px;
-    min-height: 80px;
+    min-height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--accent);
+    font-weight: 600;
+    border: 1px solid rgba(255, 77, 109, 0.1);
   }
 
   .btns-group {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 12px;
   }
 
@@ -124,76 +152,94 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 14px 25px;
-    border-radius: 15px;
+    gap: 12px;
+    padding: 15px;
+    border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
   }
 
   .btn-primary {
     background: var(--primary-btn);
     color: white;
-    box-shadow: 0 10px 20px -5px rgba(255, 117, 140, 0.4);
+    box-shadow: 0 8px 15px rgba(255, 77, 109, 0.3);
   }
 
   .btn-outline {
-    background: rgba(255, 255, 255, 0.6);
+    background: white;
     color: var(--text-main);
-    border: 1px solid white;
+    border: 1px solid #eee;
   }
 
-  .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; animation: jump 0.6s infinite alternate; }
+  .footer {
+    margin-top: 30px;
+    font-size: 0.75rem;
+  }
+
+  .dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; display: inline-block; margin: 0 2px; animation: jump 0.6s infinite alternate; }
   .dot:nth-child(2) { animation-delay: 0.2s; }
   .dot:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes jump { from { transform: translateY(0); opacity: 0.3; } to { transform: translateY(-8px); opacity: 1; } }
-
-  #particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
+  @keyframes jump { from { transform: translateY(0); } to { transform: translateY(-6px); } }
 </style>
 </head>
 <body>
-  <div class="animated-bg"></div>
-  <div id="particles"></div>
 
-  <div class="card">
-    <div class="avatar-container">
-      <div class="avatar-box">
-        <div class="avatar"></div>
-      </div>
+<div id="heartContainer"></div>
+
+<div class="card">
+  <div class="avatar-wrapper">
+    <div class="avatar-box">
+      <div class="avatar"></div>
+      <div class="online-badge"></div>
     </div>
+  </div>
+  
+  <h1>Hết rồi em ơi...</h1>
+  <div class="subtitle">Hãy Xem Những Thông Tin Sau 💌</div>
 
-    <h1>Hết Rồi Em...</h1>
-    <div class="subtitle">Nhưng anh vẫn mong em ở lại một chút nữa 💌</div>
-
-    <div class="chat-bubble">
-      <span id="typedText"></span>
-      <div id="dots" style="margin-left:8px">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      </div>
-    </div>
-
-    <div class="btns-group">
-      <a href="profile.html" class="btn btn-primary"><i class="fa-solid fa-heart"></i> Xem Profile Anh</a>
-      <a href="https://www.facebook.com/messages/t/nguyenthanhsang70" target="_blank" class="btn btn-outline" id="messengerBtn">
-        <i class="fa-brands fa-facebook-messenger" style="color: #0084ff;"></i> Nhắn Messenger
-      </a>
-      <a href="bimat.html" class="btn btn-outline"><i class="fa-solid fa-lock" style="color: #f1c40f;"></i> Bí mật của anh</a>
-    </div>
-
-    <div style="margin-top: 30px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;">
-      <div style="color:var(--accent); font-weight:700;">Design by: @Nguyễn Thanh Sang (阮清尚)</div>
-      <div style="color:var(--text-sub); font-size: 0.8rem;">设计由: @阮清尚</div>
+  <div class="chat-bubble">
+    <span id="typedText"></span>
+    <div id="dots" style="margin-left:8px">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
     </div>
   </div>
 
+  <div class="btns-group">
+     <a href="profile.html" class="btn btn-primary"><i class="fa-solid fa-heart"></i> Xem Profile Anh</a>
+    <a href="https://www.facebook.com/messages/t/nguyenthanhsang70" target="_blank" class="btn btn-outline">
+      <i class="fa-brands fa-facebook-messenger" style="color: #0084ff;"></i> Nhắn Messenger
+    </a>
+   <a href="bimat.html" class="btn btn-outline"><i class="fa-solid fa-lock" style="color: #f1c40f;"></i> Bí mật của anh</a>
+  </div>
+
+  <div class="footer">
+    <div style="color:var(--accent); font-weight:700;">Design by: @Nguyễn Thanh Sang (阮清尚)</div>
+    <div style="color:var(--text-sub); opacity: 0.6;">设计由: @阮清尚</div>
+  </div>
+</div>
+
 <script>
+function createHeart() {
+  const container = document.getElementById('heartContainer');
+  if(!container) return;
+  const heart = document.createElement('i');
+  heart.className = 'fa-solid fa-heart heart-bg';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+  heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+  heart.style.opacity = Math.random() * 0.5;
+  container.appendChild(heart);
+  setTimeout(() => heart.remove(), 10000);
+}
+setInterval(createHeart, 800);
+
 const sentences = [
   "Em có thích những gì anh làm không?",
-  "Nếu có thích, thì đừng im lặng nữa nhé.",
+  "Nếu có, thì đừng im lặng nữa nhé.",
   "Nhắn tin cho anh đi nào! ❤️",
-  "Anh vẫn đang đợi tin nhắn từ em đó..."
+  "Anh vẫn đang đợi em..."
 ];
 
 let typedEl = document.getElementById('typedText');
@@ -201,15 +247,16 @@ let dots = document.getElementById('dots');
 let iSentence = 0, iChar = 0;
 
 function type() {
+  if(!typedEl) return;
   dots.style.display = 'inline-block';
   let s = sentences[iSentence];
   if (iChar < s.length) {
     typedEl.innerHTML += s.charAt(iChar);
     iChar++;
-    setTimeout(type, 50);
+    setTimeout(type, 60);
   } else {
     dots.style.display = 'none';
-    setTimeout(erase, 2000);
+    setTimeout(erase, 2500);
   }
 }
 
@@ -226,41 +273,29 @@ function erase() {
 
 window.onload = type;
 
-// Hiệu ứng click chuột vẫn được giữ lại để tạo sự tương tác
+// ĐÃ SỬA LỖI TẠI ĐÂY
 document.addEventListener('click', (e) => {
-  for(let i=0; i<8; i++) {
-    const div = document.createElement('div');
-    div.style.position = 'fixed';
-    div.style.left = e.clientX + 'px';
-    div.style.top = e.clientY + 'px';
-    div.style.width = '10px';
-    div.style.height = '10px';
-    div.style.background = 'var(--accent)'; 
-    div.style.borderRadius = '50%';
-    div.style.pointerEvents = 'none';
-    div.style.zIndex = '9999';
-    document.body.appendChild(div);
+  for(let i=0; i<6; i++) {
+    const icon = document.createElement('i');
+    icon.className = 'fa-solid fa-heart';
+    icon.style.position = 'fixed';
+    icon.style.left = e.clientX + 'px';
+    icon.style.top = e.clientY + 'px';
+    // Sửa lỗi: bao quanh var(--accent) bằng dấu nháy đơn
+    icon.style.color = 'var(--accent)'; 
+    icon.style.pointerEvents = 'none';
+    icon.style.zIndex = '100';
+    document.body.appendChild(icon);
 
-    const angle = (i / 8) * Math.PI * 2;
-    div.animate([
+    const angle = (i / 6) * Math.PI * 2;
+    icon.animate([
       { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-      { transform: `translate(${Math.cos(angle)*80}px, ${Math.sin(angle)*80}px) scale(0)`, opacity: 0 }
+      { transform: `translate(${Math.cos(angle)*60}px, ${Math.sin(angle)*60}px) scale(0)`, opacity: 0 }
     ], { duration: 800, easing: 'ease-out' });
 
-    setTimeout(() => div.remove(), 800);
+    setTimeout(() => icon.remove(), 800);
   }
 });
-
-let idleTime = 0;
-document.onmousemove = () => idleTime = 0;
-setInterval(() => {
-  idleTime++;
-  if(idleTime >= 10) {
-    const btn = document.getElementById('messengerBtn');
-    if(btn) btn.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.05)' }, { transform: 'scale(1)' }], { duration: 500, iterations: 2 });
-    idleTime = 0;
-  }
-}, 1000);
 </script>
 </body>
 </html>
